@@ -221,7 +221,48 @@
     </div>
 
   </aside>
+<!-- REPRODUCTOR DE MÚSICA EBEN-EZER -->
+<audio id="musicaEben" src="assets/musica.mp3" loop></audio>
 
+<button
+  id="botonMusica"
+  type="button"
+  style="
+    position:fixed;
+    bottom:20px;
+    left:20px;
+    z-index:50;
+    background:#f7d4e4;
+    color:#172037;
+    border:1px solid #d2ac71;
+    border-radius:30px;
+    padding:12px 16px;
+    font-size:12px;
+    font-weight:bold;
+    box-shadow:0 5px 15px #0002;
+  "
+>
+  ♫ ACTIVAR MÚSICA
+</button>
+
+<script>
+  const musica = document.getElementById('musicaEben');
+  const botonMusica = document.getElementById('botonMusica');
+
+  botonMusica.addEventListener('click', async () => {
+    if (musica.paused) {
+      try {
+        await musica.play();
+        botonMusica.textContent = '♫ PAUSAR MÚSICA';
+      } catch (error) {
+        alert('No se pudo reproducir la música.');
+      }
+    } else {
+      musica.pause();
+      botonMusica.textContent = '♫ ACTIVAR MÚSICA';
+    }
+  });
+</script>
   <script src="script.js"></script>
 
 </body>
